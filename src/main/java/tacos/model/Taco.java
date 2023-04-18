@@ -4,22 +4,25 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Date;
 import java.util.List;
 
 @Data
-@Table
+@Table(name = "TACO")
 public class Taco {
 
     @Id
     private Long id;
 
+    @Column(value = "CREATED_AT")
     private Date createdAt = new Date();
 
     @NotNull
     @Size(min = 5, message = "Name must be at least 5 characters long")
+    @Column(value = "NAME")
     private String name;
 
     @NotNull
