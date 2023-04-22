@@ -1,6 +1,14 @@
+DROP TABLE IF EXISTS Ingredient_Ref;
+DROP TABLE IF EXISTS Ingredient;
+DROP TABLE IF EXISTS Taco;
+DROP TABLE IF EXISTS Taco_Order;
+
+DROP SEQUENCE IF EXISTS global_seq;
+CREATE SEQUENCE global_seq START WITH 100000;
+
 CREATE TABLE IF NOT EXISTS Taco_Order
 (
-    id              identity,
+    id              INTEGER PRIMARY KEY DEFAULT NEXTVAL('global_seq'),
     delivery_Name   VARCHAR(50) NOT NULL,
     delivery_Street VARCHAR(50) NOT NULL,
     delivery_City   VARCHAR(50) NOT NULL,
@@ -14,10 +22,10 @@ CREATE TABLE IF NOT EXISTS Taco_Order
 
 CREATE TABLE IF NOT EXISTS Taco
 (
-    id             identity,
+    id             INTEGER PRIMARY KEY DEFAULT NEXTVAL('global_seq'),
     name           VARCHAR(50) NOT NULL,
-    taco_order     BIGINT      NOT NULL,
-    taco_order_key BIGINT      NOT NULL,
+    taco_order     INTEGER      NOT NULL,
+    taco_order_key INTEGER      NOT NULL,
     created_at     TIMESTAMP   NOT NULL
 );
 
@@ -28,15 +36,14 @@ CREATE TABLE IF NOT EXISTS Ingredient_Ref
     taco_key   BIGINT     NOT NULL
 );
 
-
 CREATE TABLE IF NOT EXISTS Ingredient
 (
     id   VARCHAR(4) PRIMARY KEY NOT NULL,
-    name VARCHAR(25) NOT NULL,
-    type VARCHAR(10) NOT NULL
+    name VARCHAR(25)            NOT NULL,
+    type VARCHAR(10)            NOT NULL
 );
 
 ALTER TABLE Taco
-    ADD FOREIGN KEY (taco_order) REFERENCES Taco_Order (id);
+    ADD FOREIGN KEY (taco_order) REFERENCES Taco_Order (id) on DELETE CASCADE;
 ALTER TABLE Ingredient_Ref
     ADD FOREIGN KEY (ingredient) REFERENCES Ingredient (id);

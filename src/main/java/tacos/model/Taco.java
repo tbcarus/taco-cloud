@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import tacos.util.Util;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,8 +15,9 @@ import java.util.List;
 public class Taco {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = Util.START_SEQ)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
+    private Integer id;
 
     private Date createdAt = new Date();
 
@@ -28,4 +30,7 @@ public class Taco {
     @ManyToMany()
     private List<Ingredient> ingredients = new ArrayList<>();
 
+    public void addIngredient(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
+    }
 }

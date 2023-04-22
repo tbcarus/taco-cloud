@@ -1,7 +1,12 @@
 spring:
   datasource:
-    generate-unique-name: false
-    name: tacocloud
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/taco
+    username: user
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
 
 logging:
   level:
