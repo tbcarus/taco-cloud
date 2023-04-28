@@ -1,4 +1,4 @@
-package tacos.web;
+package tacos.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.h2.tools.Server;
@@ -16,6 +16,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("home");
+        registry.addViewController("/login");
     }
 
     @Bean(initMethod = "start", destroyMethod = "stop")
