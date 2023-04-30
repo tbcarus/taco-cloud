@@ -12,7 +12,7 @@
 
 <!--/*@thymesVar id="taco" type="tacos.model.Taco"*/-->
 <!--/*@thymesVar id="ingredient" type="tacos.model.Ingredient"*/-->
-<form method="POST" th:object="${taco}">
+<form method="POST" th:object="${taco}" th:action="@{/design}" id="tacoForm">
 
   <span class="validationError"
         th:if="${#fields.hasErrors('ingredients')}"
