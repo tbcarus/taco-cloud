@@ -21,9 +21,11 @@
 
     <properties>
         <project.build.sourceEncoding>
-            UTF-8</project.build.sourceEncoding>
+            UTF-8
+        </project.build.sourceEncoding>
         <project.reporting.outputEncoding>
-            UTF-8</project.reporting.outputEncoding>
+            UTF-8
+        </project.reporting.outputEncoding>
         <java.version>17</java.version>
     </properties>
 
@@ -72,11 +74,6 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
@@ -92,6 +89,28 @@
 
 
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>H2</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>postgres</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <version>42.2.21</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>

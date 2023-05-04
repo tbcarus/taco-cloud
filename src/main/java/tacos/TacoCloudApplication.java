@@ -34,6 +34,7 @@ public class TacoCloudApplication {
             ingredientRepository.save(new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
             userRepository.deleteAll();
             userRepository.save(new User("tbcarus", passwordEncoder.encode("qaz"), "fullName", "street", "Москва", "LA", "111223", "1234567890"));
+            userRepository.save(new User("user", passwordEncoder.encode("pass"), "FN", "Lenina", "Москва", "МО", "123455", "0987654321"));
         };
     }
 }

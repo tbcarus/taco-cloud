@@ -1,9 +1,43 @@
-spring:
-  datasource:
-    generate-unique-name: false
-    name: tacocloud
-
 logging:
   level:
     root: INFO
     tacos: INFO
+  file:
+    name: log/tacocloud.log
+
+taco:
+  orders:
+    pageSize: 10
+
+
+  discount:
+    codes:
+      abcdef: 10
+---
+spring:
+  config:
+    activate:
+      on-profile: H2
+
+  datasource:
+    generate-unique-name: false
+    name: tacocloud
+    hikari:
+      schema:
+      - schema.sql
+---
+spring:
+  config:
+    activate:
+      on-profile: postgres
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/taco
+    username: user
+    password: password
+    hikari:
+      data: data.sql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
