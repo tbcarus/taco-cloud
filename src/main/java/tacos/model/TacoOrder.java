@@ -13,13 +13,13 @@ import java.util.List;
 
 @Data
 @Entity
-public class TacoOrder {
+public class TacoOrder extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+//    private static final long serialVersionUID = 1L;
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long id;
 
     private Date placedAt = new Date();
 

@@ -11,11 +11,11 @@ import java.util.List;
 
 @Data
 @Entity
-public class Taco {
+public class Taco extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long id;
 
     private Date createdAt = new Date();
 

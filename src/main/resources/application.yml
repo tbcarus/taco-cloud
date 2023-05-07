@@ -1,7 +1,7 @@
 logging:
   level:
-    root: INFO
-    tacos: INFO
+    root: WARN
+    tacos: DEBUG
   file:
     name: log/tacocloud.log
 
@@ -28,9 +28,7 @@ spring:
   datasource:
     generate-unique-name: false
     name: tacocloud
-    hikari:
-      schema:
-      - schema.sql
+
 ---
 spring:
   config:

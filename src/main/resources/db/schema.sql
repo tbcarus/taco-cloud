@@ -1,3 +1,6 @@
+CREATE SEQUENCE global_seq
+    MINVALUE 100000;
+
 CREATE TABLE IF NOT EXISTS Taco_Order
 (
     id              identity,
@@ -32,8 +35,8 @@ CREATE TABLE IF NOT EXISTS Ingredient_Ref
 CREATE TABLE IF NOT EXISTS Ingredient
 (
     id   VARCHAR(4) PRIMARY KEY NOT NULL,
-    name VARCHAR(25) NOT NULL,
-    type VARCHAR(10) NOT NULL
+    name VARCHAR(25)            NOT NULL,
+    type VARCHAR(10)            NOT NULL
 );
 
 ALTER TABLE Taco
