@@ -3,6 +3,8 @@ package tacos.web.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tacos.model.Taco;
 import tacos.repository.TacoRepository;
@@ -27,8 +29,23 @@ public class TacoRestController {
         return tacoRepository.findAll(page).getContent();
     }
 
-    @GetMapping("/{id}")
+/*    @GetMapping("/{id}")
     public Optional<Taco> findById(@PathVariable Integer id) {
         return tacoRepository.findById(id);
+    }*/
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Taco> tacoById(@PathVariable("id") int id) {
+        Optional<Taco> optTaco = tacoRepository.findById(id);
+        if (optTaco.isPresent()) {
+            return new ResponseEntity<>(optTaco.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping(consumes="application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Taco postTaco(@RequestBody Taco taco) {
+        return tacoRepository.save(taco);
     }
 }
