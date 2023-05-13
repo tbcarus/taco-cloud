@@ -19,6 +19,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  data:
+    rest:
+      base-path: /data-api
 ---
 spring:
   config:
