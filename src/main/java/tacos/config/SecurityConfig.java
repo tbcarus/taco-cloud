@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,6 +42,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
+                .csrf().ignoringRequestMatchers(new AntPathRequestMatcher("/api/**"))
+                .and()
+                .csrf().ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))
+                .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/design", "/orders").hasRole("USER")
                 .requestMatchers("/", "/**").permitAll()
@@ -49,9 +54,6 @@ public class SecurityConfig {
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/design", true)
-                .and()
-                .csrf()
-                .ignoringRequestMatchers("/h2-console/**")
                 .and()
                 .headers()
                 .frameOptions()
