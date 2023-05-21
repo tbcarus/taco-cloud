@@ -19,6 +19,17 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  artemis:
+    host: localhost
+    port: 61616
+    user: admin
+    password: admin
+    embedded:
+      enabled: false
+  jms:
+    template:
+      default-destination: tacocloud.order.queue
+
 ---
 spring:
   config:
