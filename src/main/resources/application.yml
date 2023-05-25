@@ -14,11 +14,20 @@ taco:
     codes:
       abcdef: 10
 spring:
+  profiles:
+    active:
+      - H2
+      - jms
   jpa:
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+---
+spring:
+  config:
+    activate:
+      on-profile: jms
   artemis:
     host: localhost
     port: 61616
@@ -30,6 +39,11 @@ spring:
     template:
       default-destination: tacocloud.order.queue
 
+---
+spring:
+  config:
+    activate:
+      on-profile: rabbit
 ---
 spring:
   config:

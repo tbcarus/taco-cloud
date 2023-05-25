@@ -1,5 +1,7 @@
 package tacos.web.rest;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.context.annotation.Profile;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -7,6 +9,7 @@ import tacos.model.TacoOrder;
 import tacos.repository.OrderRepository;
 
 @RestController
+@Profile("!(jms|rabbit)")
 @RequestMapping(value = "/api/orders", produces = "application/json")
 @CrossOrigin(origins = "http://tacocloud:8080")
 public class OrderRestController {

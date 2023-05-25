@@ -1,10 +1,11 @@
-package tacos.messaging;
+package tacos.messaging.jms;
 
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
+import tacos.messaging.OrderMessagingService;
 import tacos.model.TacoOrder;
 
 @Service
