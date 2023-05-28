@@ -117,6 +117,13 @@
                 </dependency>
             </dependencies>
         </profile>
+
+        <profile>
+            <id>jms</id>
+        </profile>
+        <profile>
+            <id>rabbit</id>
+        </profile>
     </profiles>
 
     <build>

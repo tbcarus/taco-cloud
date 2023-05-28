@@ -9,7 +9,7 @@ import tacos.model.TacoOrder;
 import tacos.repository.OrderRepository;
 
 @RestController
-@Profile("jms")
+@Profile("jms|rabbit")
 @RequestMapping(path="/api/orders", produces="application/json")
 @CrossOrigin(origins="http://localhost:8080")
 public class OrderApiController {
