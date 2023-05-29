@@ -9,7 +9,7 @@ import tacos.model.TacoOrder;
 import tacos.repository.OrderRepository;
 
 @RestController
-@Profile("!(jms|rabbit)")
+@Profile("!(jms|rabbit|kafka)")
 @RequestMapping(value = "/api/orders", produces = "application/json")
 @CrossOrigin(origins = "http://tacocloud:8080")
 public class OrderRestController {
