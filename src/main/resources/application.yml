@@ -19,6 +19,15 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  profiles:
+    active:
+      - H2
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 ---
 spring:
   config:
