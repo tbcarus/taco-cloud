@@ -9,3 +9,8 @@ curl localhost:8080/api/ingredients
 curl -X POST localhost:8080/api/ingredients -H"Content-type: application/json" –d"{\"id\":\"FISH\",\"name\":\"Stinky Fish\", \"type\":\"PROTEIN\"}"
 
 curl -X DELETE localhost:8080/api/ingredients/FISH
+
+
+
+curl localhost:8080/actuator/metrics/tacocloud
+curl localhost:8080/actuator/metrics/tacocloud?tag=ingredient:FLTO
