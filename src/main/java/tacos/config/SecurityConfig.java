@@ -46,6 +46,8 @@ public class SecurityConfig {
                 .and()
                 .csrf().ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))
                 .and()
+                .csrf().ignoringRequestMatchers(new AntPathRequestMatcher("/actuator/**"))
+                .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/design", "/orders").hasRole("USER")
                 .requestMatchers("/", "/**").permitAll()

@@ -14,3 +14,8 @@ curl -X DELETE localhost:8080/api/ingredients/FISH
 
 curl localhost:8080/actuator/metrics/tacocloud
 curl localhost:8080/actuator/metrics/tacocloud?tag=ingredient:FLTO
+
+curl localhost:8080/actuator/notes -d"{\"text\":\"Bring home milk\"}" -H"Content-type: application/json"
+curl localhost:8080/actuator/notes -d"{\"text\":\"Take dry cleaning\"}" -H"Content-type: application/json"
+curl localhost:8080/actuator/notes
+cur  -X DELETE localhost:8080/actuator/notes?index=1
